@@ -4,6 +4,7 @@ import Carousel from '../Component/Carousel';
 import apiRequest from '../Axios';
 import { useNavigate } from 'react-router-dom';
 import Products from '../Component/Product';
+import Footer from '../Component/Footer';
 
 export const Home = () => {
   const [categories, setCategories] = useState([]);
@@ -66,6 +67,10 @@ export const Home = () => {
       </div>
       <div>
         <Products />
+      </div>
+
+      <div>
+        <Footer/>
       </div>
     </div>
   );
