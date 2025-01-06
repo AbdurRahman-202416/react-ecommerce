@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -129,16 +130,16 @@ const Navbar = () => {
                 {isCategoriesOpen && (
                   <ul className="bg-gray-800 text-white rounded-lg px-2 mt-2 w-48">
                     <li className="px-4 py-2 hover:bg-gray-700">
-                      <a href="/category/1">Men's Clothing</a>
+                      <Link to={`/categories/1`}>Men's Clothing</Link>
                     </li>
                     <li className="px-4 py-2 hover:bg-gray-700">
-                      <a href="/category/2">Women's Clothing</a>
+                      <Link to={`/categories/2`}>Women's Clothing</Link>
                     </li>
                     <li className="px-4 py-2 hover:bg-gray-700">
-                      <a href="/category/3">Accessories</a>
+                      <Link  to={`/categories/3`}>Accessories</Link>
                     </li>
                     <li className="px-4 py-2 hover:bg-gray-700">
-                      <a href="/category/4">Shoes</a>
+                      <Link  to={`/categories/4`}>Shoes</Link>
                     </li>
                   </ul>
                 )}
