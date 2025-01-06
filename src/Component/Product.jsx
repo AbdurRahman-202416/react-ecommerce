@@ -45,7 +45,7 @@ const Products = () => {
               <div className="relative group">
                 <div className="mx-auto w-full transform overflow-hidden   dark:bg-slate-800  duration-300 hover:scale-105 hover:shadow-lg">
                   <img
-                    className="h-[200px] sm:h-[300px] w-full object-cover object-center"
+                    className="h-[250px] sm:h-[350px] w-full object-cover object-center"
                     src={product.images[0]}
                     alt="Product Image"
                   />
