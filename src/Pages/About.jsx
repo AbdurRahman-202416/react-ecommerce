@@ -1,73 +1,43 @@
 import React from "react";
 
-const CustomTable = () => {
+const AboutUs = () => {
   return (
-    <div className="overflow-x-auto">
-      <table className="table-auto border-collapse border border-gray-300 w-full">
-        <thead>
-          <tr className="bg-gray-200">
-            <th className="border border-gray-300 px-4 py-2">শ্রেণি</th>
-            <th className="border border-gray-300 px-4 py-2">শাখা</th>
-            <th className="border border-gray-300 px-4 py-2">ছাত্র</th>
-            <th className="border border-gray-300 px-4 py-2">ছাত্রী</th>
-            <th className="border border-gray-300 px-4 py-2">মোট ছাত্র/ছাত্রী</th>
-            <th className="border border-gray-300 px-4 py-2">উপস্থিত ছাত্র</th>
-            <th className="border border-gray-300 px-4 py-2">উপস্থিত ছাত্রী</th>
-            <th className="border border-gray-300 px-4 py-2">মোট উপস্থিত</th>
-            <th className="border border-gray-300 px-4 py-2">উপস্থিতির শতাংশ</th>
-          </tr>
-        </thead>
-        <tbody>
-          {/* Sample Rows */}
-          <tr className="bg-blue-100">
-            <td className="border border-gray-300 px-4 py-2" rowSpan="2">নবম শ্রেণি</td>
-            <td className="border border-gray-300 px-4 py-2">ক</td>
-            <td className="border border-gray-300 px-4 py-2">36</td>
-            <td className="border border-gray-300 px-4 py-2">55</td>
-            <td className="border border-gray-300 px-4 py-2">91</td>
-            <td className="border border-gray-300 px-4 py-2">0</td>
-            <td className="border border-gray-300 px-4 py-2">0</td>
-            <td className="border border-gray-300 px-4 py-2">0</td>
-            <td className="border border-gray-300 px-4 py-2">0.00</td>
-          </tr>
-          <tr className="bg-blue-100">
-            <td className="border border-gray-300 px-4 py-2">খ</td>
-            <td className="border border-gray-300 px-4 py-2">47</td>
-            <td className="border border-gray-300 px-4 py-2">56</td>
-            <td className="border border-gray-300 px-4 py-2">103</td>
-            <td className="border border-gray-300 px-4 py-2">0</td>
-            <td className="border border-gray-300 px-4 py-2">0</td>
-            <td className="border border-gray-300 px-4 py-2">0</td>
-            <td className="border border-gray-300 px-4 py-2">0.00</td>
-          </tr>
-          {/* Highlighted Total Row */}
-          <tr className="bg-yellow-100 font-bold">
-            <td className="border border-gray-300 px-4 py-2" colSpan="4">
-              মোট নবম শ্রেণি
-            </td>
-            <td className="border border-gray-300 px-4 py-2">194</td>
-            <td className="border border-gray-300 px-4 py-2">0</td>
-            <td className="border border-gray-300 px-4 py-2">0</td>
-            <td className="border border-gray-300 px-4 py-2">0</td>
-            <td className="border border-gray-300 px-4 py-2">0.00</td>
-          </tr>
-          {/* Add more rows as needed */}
-        </tbody>
-        <tfoot>
-          <tr className="bg-gray-300 font-bold">
-            <td className="border border-gray-300 px-4 py-2" colSpan="4">
-              সর্বমোট
-            </td>
-            <td className="border border-gray-300 px-4 py-2">1071</td>
-            <td className="border border-gray-300 px-4 py-2">0</td>
-            <td className="border border-gray-300 px-4 py-2">0</td>
-            <td className="border border-gray-300 px-4 py-2">0</td>
-            <td className="border border-gray-300 px-4 py-2">0.00</td>
-          </tr>
-        </tfoot>
-      </table>
+    <div className="sm:flex items-center max-w-screen-xl mx-auto px-4 py-10">
+      {/* Image Section */}
+      <div className="sm:w-1/2 p-5">
+        <div className="image object-center text-center">
+          <img
+            src="https://i.imgur.com/WbQnbas.png"
+            alt="About Our Company"
+            className="rounded-lg "
+          />
+        </div>
+      </div>
+
+      {/* Text Section */}
+      <div className="sm:w-1/2 p-5">
+        <div className="text">
+          <span className="text-gray-500 border-b-2 border-indigo-600 uppercase text-sm">
+            About Us
+          </span>
+          <h2 className="my-4 font-bold text-3xl sm:text-4xl">
+            Welcome to <span className="text-indigo-600">Our Company</span>
+          </h2>
+          <p className="text-gray-700 leading-relaxed">
+            We are dedicated to providing top-notch solutions tailored to your
+            needs. Our mission is to deliver high-quality products and services
+            that empower businesses and enrich lives. With a passion for
+            innovation and a commitment to excellence, we’re here to help you
+            achieve your goals.
+          </p>
+          <p className="mt-4 text-gray-700 leading-relaxed">
+            Join us on this journey of growth and success. Together, let’s
+            create a brighter future, one step at a time.
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default CustomTable;
+export default AboutUs;

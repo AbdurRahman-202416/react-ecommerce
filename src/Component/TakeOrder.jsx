@@ -115,9 +115,8 @@ const OrderForm = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className={`w-full bg-blue-600 text-white py-2 px-4 rounded-md ${
-            isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-700"
-          } transition duration-300`}
+          className={`w-full bg-blue-600 text-white py-2 px-4 rounded-md ${isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-700"
+            } transition duration-300`}
           disabled={isSubmitting}
         >
           {isSubmitting ? "Placing Order..." : "Submit Order"}

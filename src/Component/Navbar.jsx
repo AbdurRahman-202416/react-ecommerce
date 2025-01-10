@@ -1,174 +1,157 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import apiRequest from "../Axios"; // Adjust the import path as needed
 
 const Navbar = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
+  const [categories, setCategories] = useState([]);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+  // Fetch categories from the API
+  const getCategories = async () => {
+    try {
+      const response = await apiRequest.get('/categories');
+      setCategories(response.data);
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+    }
   };
 
-  const toggleCategories = () => {
+  useEffect(() => {
+    getCategories();
+  }, []);
+
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+  const toggleCategories = (e) => {
+    e.stopPropagation(); // Prevent closing the sidebar when toggling the dropdown
     setIsCategoriesOpen(!isCategoriesOpen);
   };
 
+  const closeSidebar = () => {
+    setIsSidebarOpen(false);
+    setIsCategoriesOpen(false);
+  };
+
   return (
-    <div>
-      <nav className="bg-gray-800 text-white fixed top-0 w-full z-50 shadow-lg">
-        <div className="container mx-auto flex items-center justify-between px-6 py-4">
-          {/* Logo */}
-          <a className="text-2xl font-bold" href="/">
-            FearStyle
-          </a>
+    <nav className="bg-gray-800 text-white font-bold fixed top-0 w-full z-50 shadow-lg">
+      <div className="container mx-auto flex items-center justify-between px-6 py-4">
+        <Link to="/" className="text-2xl font-bold">FearStyle</Link>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={toggleMobileMenu}
-            className="lg:hidden text-white focus:outline-none"
-            aria-label="Toggle navigation"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
+        {/* Desktop Menu */}
+        <div className="hidden lg:flex items-center space-x-8">
+          <Link to="/" className="hover:text-yellow-400">Home</Link>
+          {/* Categories Dropdown */}
+          <div className="relative">
+            <button
+              className="flex items-center hover:text-yellow-400 focus:outline-none"
+              onClick={toggleCategories}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4 6h16M4 12h16m-7 6h7"
-              />
-            </svg>
-          </button>
-
-          {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center space-x-6">
-            <ul className="flex items-center space-x-6">
-              <li>
-                <a href="/" className="hover:text-yellow-400">
-                  Home
-                </a>
-              </li>
-              <li className="relative">
-                {/* Categories Dropdown */}
-                <button
-                  onClick={toggleCategories}
-                  className="hover:text-yellow-400 flex items-center focus:outline-none"
-                >
-                  Categories
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="ml-2 h-4 w-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
+              Categories
+              <svg
+                className={`ml-2 h-4 w-4 transform transition-transform duration-200 ${
+                  isCategoriesOpen ? 'rotate-180' : ''
+                }`}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            {isCategoriesOpen && (
+              <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                {categories.map((category) => (
+                  <Link
+                    key={category.id}
+                    to={`/categories/${category.id}`}
+                    className="block px-4 py-2 text-gray-800 rounded-sm  hover:bg-indigo-300"
+                    onClick={() => setIsCategoriesOpen(false)}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-                {isCategoriesOpen && (
-                  <ul className="absolute bg-gray-800 text-white rounded-lg shadow-lg mt-2 w-48">
-                    <li className="px-4 py-2 hover:bg-gray-700">
-                      <a href="/category/1">Men's Clothing</a>
-                    </li>
-                    <li className="px-4 py-2 hover:bg-gray-700">
-                      <a href="/category/2">Women's Clothing</a>
-                    </li>
-                    <li className="px-4 py-2 hover:bg-gray-700">
-                      <a href="/category/3">Accessories</a>
-                    </li>
-                    <li className="px-4 py-2 hover:bg-gray-700">
-                      <a href="/category/4">Shoes</a>
-                    </li>
-                  </ul>
-                )}
-              </li>
-              <li>
-                <a href="about" className="hover:text-yellow-400">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-yellow-400">
-                  Contact
-                </a>
-              </li>
-            
-            </ul>
+                    {category.name}
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
+
+          <Link to="/about" className="hover:text-yellow-400">About</Link>
+          <Link to="/contact" className="hover:text-yellow-400">Contact</Link>
         </div>
 
-        {/* Mobile Navigation Links */}
-        {isMobileMenuOpen && (
-          <div className="lg:hidden bg-gray-800 text-white">
-            <ul className="flex flex-col items-center space-y-4 py-4">
-              <li>
-                <a
-                  href="/"
-                  className="hover:text-yellow-400"
-                  onClick={toggleMobileMenu}
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                {/* Mobile Categories Dropdown */}
-                <button
-                  onClick={toggleCategories}
-                  className="hover:text-yellow-400"
-                >
-                  Categories
-                </button>
-                {isCategoriesOpen && (
-                  <ul className="bg-gray-800 text-white rounded-lg px-2 mt-2 w-48">
-                    <li className="px-4 py-2 hover:bg-gray-700">
-                      <Link to={`/categories/1`}>Men's Clothing</Link>
-                    </li>
-                    <li className="px-4 py-2 hover:bg-gray-700">
-                      <Link to={`/categories/2`}>Women's Clothing</Link>
-                    </li>
-                    <li className="px-4 py-2 hover:bg-gray-700">
-                      <Link  to={`/categories/3`}>Accessories</Link>
-                    </li>
-                    <li className="px-4 py-2 hover:bg-gray-700">
-                      <Link  to={`/categories/4`}>Shoes</Link>
-                    </li>
-                  </ul>
-                )}
-              </li>
-             
-              <li>
-                <a
-                  href="#contact"
-                  className="hover:text-yellow-400"
-                  onClick={toggleMobileMenu}
-                >
-                  Contact
-                </a>
-              </li>
-              
-              <li>
-                <a
-                  href="#about"
-                  className="hover:text-yellow-400"
-                  onClick={toggleMobileMenu}
-                >
-                  About
-                </a>
-              </li>
-            </ul>
+        {/* Mobile Menu Button */}
+        <button onClick={toggleSidebar} className="lg:hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+
+      {/* Mobile Sidebar */}
+      <div
+        className={`fixed top-0 right-0 h-full w-[70%] sm:w-[30%] bg-gray-800 transform transition-transform duration-300 ease-in-out ${
+          isSidebarOpen ? 'translate-x-0' : 'translate-x-full'
+        } lg:hidden`}
+      >
+        <div className="p-6">
+          <div className="flex justify-end">
+            <button onClick={closeSidebar} className="text-white">
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
           </div>
-        )}
-      </nav>
-    </div>
+
+          <div className="mt-8 space-y-4">
+            <Link to="/" className="block text-white hover:text-yellow-400" onClick={closeSidebar}>
+              Home
+            </Link>
+
+            {/* Categories Dropdown */}
+            <div>
+              <button
+                onClick={toggleCategories}
+                className="flex items-center text-white hover:text-yellow-400 w-full"
+              >
+                Categories
+                <svg
+                  className={`ml-2 h-4 w-4 transform transition-transform duration-200 ${
+                    isCategoriesOpen ? 'rotate-180' : ''
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {isCategoriesOpen && (
+                <div className="mt-2 ml-4 space-y-2">
+                  {categories.map((category) => (
+                    <Link
+                      key={category.id}
+                      to={`/categories/${category.id}`}
+                      className="block text-white hover:text-yellow-400"
+                      onClick={closeSidebar}
+                    >
+                      {category.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <Link to="/about" className="block text-white hover:text-yellow-400" onClick={closeSidebar}>
+              About
+            </Link>
+            <Link to="/contact" className="block text-white hover:text-yellow-400" onClick={closeSidebar}>
+              Contact
+            </Link>
+          </div>
+        </div>
+      </div>
+
+     
+    </nav>
   );
 };
 

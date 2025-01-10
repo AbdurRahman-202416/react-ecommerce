@@ -15,6 +15,12 @@ const ProductDetails = () => {
       const response = await apiRequest.get(`/products/${Number(id)}`);
       setProduct(response.data);
       console.log(response.data);
+      if (response?.data) {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
+      }
     } catch (error) {
       console.error("Error fetching product details:", error);
     }
@@ -61,27 +67,20 @@ const ProductDetails = () => {
         <div className="w-full md:w-1/2 px-4 mt-6 md:mt-0">
           <h2 className="text-2xl font-bold mb-4">{product.title}</h2>
           <TakeOrder/>
-          <p className="text-gray-700 mb-6">{product.description}</p>
+          <p className="text-gray-700 text-justify mb-6">{product.description}</p>
           <div className="flex items-center mb-6">
             <p className="text-xl font-semibold text-gray-900 mr-4">
-              ${product.price}
+             Product Price : <strong>৳</strong>{product.price}
             </p>
-            <p className="text-base font-medium text-gray-500 line-through">
-              $25.00
-            </p>
-            <p className="ml-4 text-base font-medium text-green-500">
-              20% off
-            </p>
+           
           </div>
-          <button className="bg-blue-600 text-white px-6 py-3 rounded-md font-medium hover:bg-blue-700 transition">
-            Add to Cart
-          </button>
+        
         </div>
       </div>
     </div>
   
     
-    <Footer/>
+
    </div>
    
   );

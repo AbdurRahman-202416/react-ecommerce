@@ -28,11 +28,11 @@ const Products = () => {
   };
 
   return (
-    <div className="container mx-auto py-10">
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold">
+    <div className="container mx-auto pt-2">
+      <div className="text-center">
+        <h2 className="text-3xl shadow-md shadow-gray-300 py-2 sm:mx-36 text-center font-bold">
           Our <span className="text-blue-600">Products</span>
-          <hr className="bg-gray-500 py-1 rounded-xl px-12" />
+          
         </h2>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 px-2 lg:grid-cols-3 gap-1">
@@ -42,7 +42,7 @@ const Products = () => {
             className="  overflow-hidden hover:shadow-lg transition-shadow"
           >
             <Link to={`/order/${product.id}`}>
-              <div className="relative group">
+              <div className="relative py-2 group">
                 <div className="mx-auto w-full transform overflow-hidden   dark:bg-slate-800  duration-300 hover:scale-105 hover:shadow-lg">
                   <img
                     className="h-[250px] sm:h-[350px] w-full object-cover object-center"
@@ -56,13 +56,13 @@ const Products = () => {
 
                     <div className="flex items-center">
                       <p className="mr-2 text-lg font-semibold text-gray-900 dark:text-white">
-                        ${product.price}
+                        <strong>৳</strong>{product.price}
                       </p>
-                      <p className="text-base font-medium text-gray-500 line-through dark:text-gray-300">
-                        ${product.originalPrice}
+                      <p className="text-base  text-red-400 line-through dark:text-gray-300">
+                        <strong >৳ &nbsp;100</strong>{product.originalPrice}
                       </p>
-                      <p className="ml-auto text-base font-medium text-green-500">
-                        {product.discount}% off
+                      <p className="ml-auto text-[10px] sm:text-[15px] font-semibold text-green-500">
+                        20{product.discount}% off
                       </p>
                     </div>
                   </div>
