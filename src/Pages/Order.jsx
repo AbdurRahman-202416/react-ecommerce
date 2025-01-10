@@ -64,14 +64,15 @@ const ProductDetails = () => {
         </div>
 
         {/* Product Details */}
-        <div className="w-full md:w-1/2 px-4 mt-6 md:mt-0">
-          <h2 className="text-2xl font-bold mb-4">{product.title}</h2>
+        <div className="w-full sm:w-1/2 px-4 mt-6 md:mt-0">
+          <h2 className="sm:text-2xl text-base font-bold mb-4">{product.title}</h2>
+          <p className="text-xl font-semibold text-gray-900 mr-4">
+             Product Price : <strong className="text-indigo-600">৳{product.price}</strong>
+            </p>
           <TakeOrder/>
           <p className="text-gray-700 text-justify mb-6">{product.description}</p>
           <div className="flex items-center mb-6">
-            <p className="text-xl font-semibold text-gray-900 mr-4">
-             Product Price : <strong>৳</strong>{product.price}
-            </p>
+           
            
           </div>
         

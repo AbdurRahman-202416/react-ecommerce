@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
+
+import apiRequest from "../Axios";
+import { notifyError, notifySuccess } from "./Toster";
 
 const OrderForm = () => {
   const [formData, setFormData] = useState({
@@ -9,7 +11,7 @@ const OrderForm = () => {
     address: "",
     product: "",
     quantity: 1,
-    size: "", // Add size to formData
+    size: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -19,16 +21,16 @@ const OrderForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       setIsSubmitting(true);
-
-      const response = await axios.post("https://your-server-api.com/orders", formData);
+      const response = await apiRequest.post("/categories", formData);
       console.log("Order response:", response.data);
-      alert("Order placed successfully!");
+     notifySuccess("Order placed successfully!");
 
+      // Reset the form
       setFormData({
         name: "",
         email: "",
@@ -40,21 +42,21 @@ const OrderForm = () => {
       });
     } catch (error) {
       console.error("Error submitting order:", error);
-      alert("Failed to place the order. Please try again.");
+      notifyError("Failed to place the order. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="container mx-auto p-6">
-      <h2 className="text-2xl font-bold text-center mb-6">Place Your Order</h2>
+    <div className="container mx-auto p-1">
+      <h2 className="sm:text-3xl text-base font-bold text-center text-gray-800 mb-8">Place Your Order</h2>
       <form
-        className="bg-white shadow-lg rounded-lg p-6 max-w-lg mx-auto"
+        className="bg-white shadow-xl rounded-lg p-8 max-w-lg mx-auto space-y-6"
         onSubmit={handleSubmit}
       >
         {/* Name */}
-        <div className="mb-4">
+        <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">
             Full Name
           </label>
@@ -65,16 +67,78 @@ const OrderForm = () => {
             value={formData.name}
             onChange={handleInputChange}
             required
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
 
-        {/* Other fields here */}
+        {/* Email */}
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            required
+            className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
+
+        {/* Phone */}
+        <div>
+          <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleInputChange}
+            required
+            className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
+
+        {/* Address */}
+        <div>
+          <label htmlFor="address" className="block text-sm font-medium text-gray-700">
+            Address
+          </label>
+          <textarea
+            id="address"
+            name="address"
+            value={formData.address}
+            onChange={handleInputChange}
+            required
+            className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            rows="3"
+          ></textarea>
+        </div>
+
+        {/* Product */}
+        <div>
+          <label htmlFor="product" className="block text-sm font-medium text-gray-700">
+            Product Name
+          </label>
+          <input
+            type="text"
+            id="product"
+            name="product"
+            value={formData.product}
+            onChange={handleInputChange}
+            required
+            className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
 
         {/* Size */}
-        <div className="mb-4">
+        <div>
           <label htmlFor="size" className="block text-sm font-medium text-gray-700">
-            Select Size
+            Size
           </label>
           <select
             id="size"
@@ -82,7 +146,7 @@ const OrderForm = () => {
             value={formData.size}
             onChange={handleInputChange}
             required
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
           >
             <option value="" disabled>
               Choose a size
@@ -96,7 +160,7 @@ const OrderForm = () => {
         </div>
 
         {/* Quantity */}
-        <div className="mb-4">
+        <div>
           <label htmlFor="quantity" className="block text-sm font-medium text-gray-700">
             Quantity
           </label>
@@ -108,14 +172,14 @@ const OrderForm = () => {
             onChange={handleInputChange}
             min="1"
             required
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
 
         {/* Submit Button */}
         <button
           type="submit"
-          className={`w-full bg-blue-600 text-white py-2 px-4 rounded-md ${isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-700"
+          className={`w-full bg-blue-600 text-white py-2 px-4 rounded-lg ${isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-700"
             } transition duration-300`}
           disabled={isSubmitting}
         >

@@ -25,7 +25,7 @@ export const Home = () => {
   }, []);
 
   // Filter top 6 categories
-  const filteredProducts = categories?.slice(0, 6);
+  const filteredProducts = categories?.slice(0, 10);
 
   return (
     <div>
