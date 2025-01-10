@@ -57,7 +57,7 @@ const Carousel = () => {
             </div>
 
             {/* Slides */}
-            <div className="relative h-[300px] sm:h-[500px] overflow-hidden w-full">
+            <div className="relative h-[280px] sm:h-[450px] overflow-hidden w-full">
                 {slides.map((slide, index) => (
                     <div
                         key={index}
@@ -81,7 +81,7 @@ const Carousel = () => {
             </div>
 
             {/* Controls */}
-            <button
+            {/* <button
                 onClick={handlePrev}
                 className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 z-20"
             >
@@ -118,7 +118,7 @@ const Carousel = () => {
                         d="M8.25 4.5l7.5 7.5-7.5 7.5"
                     />
                 </svg>
-            </button>
+            </button> */}
         </div>
     );
 };

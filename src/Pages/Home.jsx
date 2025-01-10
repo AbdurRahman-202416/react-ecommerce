@@ -71,7 +71,7 @@ export const Home = () => {
       <section className="py-10 bg-gray-50">
         <div className=" mx-auto">
           <h2 className="text-3xl font-bold text-center mb-8">Categories</h2>
-          <CategoriesSlider categories={categories} />
+          <CategoriesSlider categories={filteredProducts} />
         </div>
       </section>
 
@@ -80,7 +80,7 @@ export const Home = () => {
       <section className="w-full px-2 mb-10">
         <img
           className="w-full h-[70px] sm:h-[150px] rounded-md object-cover"
-          src="https://static.vecteezy.com/system/resources/thumbnails/004/707/493/small/online-shopping-on-phone-buy-sell-business-digital-web-banner-application-money-advertising-payment-ecommerce-illustration-search-vector.jpg"
+          src="https://graphicsfamily.com/wp-content/uploads/edd/2022/06/Free-E-commerce-Product-Banner-Design-with-Green-Colors-1536x864.jpg"
           alt="Promotional Banner"
         />
       </section>

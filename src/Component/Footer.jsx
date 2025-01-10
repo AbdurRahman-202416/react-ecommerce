@@ -3,10 +3,10 @@ import React from "react";
 const Footer = () => {
   return (
     <section className="bg-gray-100 opacity-90 ">
-      <div>
-        <div className="container mx-auto my-4">
+      <section>
+        <div className="container mx-auto  sm:my-4">
           
-          <div className="text-center py-2 sm:py-8 mb-12">
+          <div className="text-center py-2 sm:py-8 mb-8">
             <h1 className="sm:text-4xl text-base font-bold text-gray-800">Why Shop With Us?</h1>
             <p className="text-gray-500 mt-2">Discover the benefits of shopping at our  store.</p>
           </div>
@@ -60,9 +60,7 @@ const Footer = () => {
           </div>
         </div>
 
-
-
-      </div>
+      </section>
       <div className="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
         {/* Navigation Links */}
         <nav className="flex flex-wrap justify-center -mx-5 -my-2">
