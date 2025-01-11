@@ -119,22 +119,6 @@ const OrderForm = () => {
           ></textarea>
         </div>
 
-        {/* Product */}
-        <div>
-          <label htmlFor="product" className="block text-sm font-medium text-gray-700">
-            Product Name
-          </label>
-          <input
-            type="text"
-            id="product"
-            name="product"
-            value={formData.product}
-            onChange={handleInputChange}
-            required
-            className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
-          />
-        </div>
-
         {/* Size */}
         <div>
           <label htmlFor="size" className="block text-sm font-medium text-gray-700">
@@ -149,7 +133,7 @@ const OrderForm = () => {
             className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
           >
             <option value="" disabled>
-              Choose a size
+              Choose Your size
             </option>
             <option value="XS">XS</option>
             <option value="S">S</option>

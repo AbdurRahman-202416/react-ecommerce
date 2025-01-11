@@ -2,89 +2,30 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <section className="bg-gray-100 opacity-90 ">
-      <section>
-        <div className="container mx-auto  sm:my-4">
-          
-          <div className="text-center py-2 sm:py-8 mb-8">
-            <h1 className="sm:text-4xl text-base font-bold text-gray-800">Why Shop With Us?</h1>
-            <p className="text-gray-500 mt-2">Discover the benefits of shopping at our  store.</p>
-          </div>
-
-          {/* Features Section */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 gap-1">
-            {/* Free Shipping */}
-            <div className="flex flex-col items-center p-2 rounded-lg">
-              <div className="bg-indigo-500 text-white w-12 h-12 flex justify-center items-center rounded-full mb-4">
-              
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h18M9 21h6m-7-5h8a2 2 0 001.8-1.2L21 9H3l1.2 6.8A2 2 0 007 16z" />
-                </svg>
-              </div>
-              <h3 className="sm:text-2xl text-base font-semibold">Cash on Delivery</h3>
-
-            </div>
-            {/* Always Fresh */}
-            <div className="flex flex-col items-center p-2 rounded-lg">
-              <div className="bg-green-500 text-white w-12 h-12 flex justify-center items-center rounded-full mb-4">
-                
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <h3 className="sm:text-lg text-base font-semibold">Always Fresh</h3>
-
-            </div>
-            {/* Superior Quality */}
-            <div className="flex flex-col items-center p-2 rounded-lg">
-              <div className="bg-yellow-500 text-white w-12 h-12 flex justify-center items-center rounded-full mb-4">
-               
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 16l4-4m0 0l4-4m-4 4H3m13 0h5" />
-                </svg>
-              </div>
-              <h3 className="sm:text-lg text-base font-semibold"><span className="text-blue-500 sm:text-lg text-base">☆⋆</span> Best Quality</h3>
-
-            </div>
-            {/* Support */}
-            <div className="flex flex-col items-center p-2 rounded-lg">
-              <div className="bg-red-500 text-white w-12 h-12 flex justify-center items-center rounded-full mb-4">
-                
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m0 4h1v-4h1m-1-6.938a2 2 0 112 0v6.937a2 2 0 11-2 0V9.062z" />
-                </svg>
-              </div>
-              <h3 className="sm:text-lg text-base font-semibold">Support-24/7</h3>
-
-            </div>
-          </div>
-        </div>
-
-      </section>
-      <div className="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+    <footer className="bg-indigo-500 text-white py-8">
+      <div className="container mx-auto px-4 text-left space-y-6">
         {/* Navigation Links */}
-        <nav className="flex flex-wrap justify-center -mx-5 -my-2">
+        <nav className="space-y-2">
           {[
-            { label: "About", href: "/about" },
-            { label: "Blog", href: "#" },
-            { label: "Team", href: "#" },
-            { label: "Pricing", href: "#" },
-            { label: "Contact", href: "#" },
-            { label: "Terms", href: "#" },
+            "About Us",
+            "Our Store",
+            "Contact Us",
+            "Return Policy",
+            "Terms & Condition",
+            "Privacy Policy",
+            "FAQ",
           ].map((link, index) => (
-            <div key={index} className="px-2 py-2">
-              <a
-                href={link.href}
-                className="text-base leading-6 text-gray-500 hover:text-gray-900"
-              >
-                {link.label}
-              </a>
-            </div>
+            <p
+              key={index}
+              className="text-sm sm:text-xl font-medium hover:underline cursor-pointer"
+            >
+              {link}
+            </p>
           ))}
         </nav>
 
-        {/* Social Media Links */}
-        <div className="flex justify-center mt-8 space-x-6">
+        {/* Social Media Icons */}
+        <div className="flex justify-center space-x-4">
           {[
             {
               label: "Facebook",
@@ -92,9 +33,9 @@ const Footer = () => {
               icon: (
                 <svg
                   className="w-6 h-6"
-                  aria-hidden="true"
                   fill="currentColor"
                   viewBox="0 0 24 24"
+                  aria-hidden="true"
                 >
                   <path
                     fillRule="evenodd"
@@ -110,9 +51,9 @@ const Footer = () => {
               icon: (
                 <svg
                   className="w-6 h-6"
-                  aria-hidden="true"
                   fill="currentColor"
                   viewBox="0 0 24 24"
+                  aria-hidden="true"
                 >
                   <path
                     fillRule="evenodd"
@@ -123,23 +64,16 @@ const Footer = () => {
               ),
             },
           ].map((social, index) => (
-            <a
-              key={index}
-              href={social.href}
-              className="text-gray-700 hover:text-gray-500"
-            >
-              <span className="sr-only">{social.label}</span>
+            <a key={index} href={social.href} className="hover:text-gray-100 justify-center">
               {social.icon}
             </a>
           ))}
         </div>
 
-        {/* Footer Note */}
-        <p className="mt-8 text-base leading-6 text-center text-gray-700">
-          ©{new Date().getFullYear()} FearStyle, Inc. All rights reserved.
-        </p>
+        {/* Copyright Section */}
+        <p className="text-sm text-center">© 2025, TWELVE CLOTHING LIMITED</p>
       </div>
-    </section>
+    </footer>
   );
 };
 

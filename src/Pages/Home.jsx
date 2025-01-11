@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Products from "../Component/Product";
 import Footer from "../Component/Footer";
 import CategoriesSlider from "../Component/CategorisSlider";
+import banner from "../assets/banner.png";
 
 export const Home = () => {
   const [categories, setCategories] = useState([]);
@@ -77,16 +78,16 @@ export const Home = () => {
 
 
       {/* Promotional Banner */}
-      <section className="w-full px-2 mb-10">
+      <section className="w-full px-1 mb-2">
         <img
-          className="w-full h-[70px] sm:h-[150px] rounded-md object-cover"
-          src="https://graphicsfamily.com/wp-content/uploads/edd/2022/06/Free-E-commerce-Product-Banner-Design-with-Green-Colors-1536x864.jpg"
+          className="w-full h-[80px] sm:h-[160px] object-cover rounded-sm "
+          src={banner}
           alt="Promotional Banner"
         />
       </section>
 
       {/* Products Section */}
-      <section className="py-10">
+      <section className="py-4">
         <Products />
       </section>
 

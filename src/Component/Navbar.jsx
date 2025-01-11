@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import apiRequest from "../Axios"; // Adjust the import path as needed
+import apiRequest from "../Axios"; 
+import logo from "../assets/logo.png"
 
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -34,8 +35,9 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gray-800 text-white font-bold fixed top-0 w-full z-50 shadow-lg">
-      <div className="container mx-auto flex items-center justify-between px-6 py-4">
-        <Link to="/" className="text-2xl font-bold">FearStyle</Link>
+      <div className="container mx-auto flex items-center justify-between px-6 ">
+        <Link to="/" className="">
+        <img src={logo} alt="logo"className=" h-[60px] sm:h-[65px] rounded-full  w-[110px]" /></Link>
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center space-x-8">

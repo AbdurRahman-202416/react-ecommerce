@@ -73,7 +73,7 @@ const Carousel = () => {
 
                         {/* Overlay Text */}
                         <div className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-40 text-white">
-                            <h2 className="text-2xl sm:text-4xl font-bold mb-2">{slide.label}</h2>
+                            <h2 className="text-lg sm:text-4xl font-bold mb-2">{slide.label}</h2>
                             <p className="text-sm sm:text-lg">{slide.description}</p>
                         </div>
                     </div>

@@ -30,7 +30,7 @@ const CategoriesSlider = ({ categories }) => {
       {slides.map((slide, index) => (
         <div
           key={index}
-          className="grid grid-cols-3 px-2 gap-1 h-[220px] sm:h-[300px] w-full"
+          className="grid grid-cols-3 px-2 gap-1 h-[190px] sm:h-[300px] w-full"
         >
           {slide.map((category) => (
             <Link
@@ -41,9 +41,9 @@ const CategoriesSlider = ({ categories }) => {
               <img
                 src={category.image}
                 alt={category.name}
-                className="w-full sm:h-[250px] h-[180px] object-cover rounded-sm"
+                className="w-full  sm:h-[250px] h-[150px] object-cover rounded-sm"
               />
-              <h3 className="sm:text-lg text-sm font-bold text-center text-gray-800 mt-2">
+              <h3 className="sm:text-lg text-sm font-bold w-full py-2 border bg-gray-300 text-center text-gray-900 ">
                 {category.name}
               </h3>
             </Link>
