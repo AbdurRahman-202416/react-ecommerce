@@ -32,10 +32,10 @@ const ProductDetails = () => {
 
   return (
     <div>
-      <div className="container mx-auto py-10 px-4">
+      <div className="container mx-auto py-10 px-1">
         <div className="flex py-10 flex-wrap items-center">
           {/* Image Slider */}
-          <div className="w-full md:w-1/2">
+          <div className="w-full mx-auto py-1 sm:py-4  md:w-[60%]">
             <div className="relative">
               <img
                 src={product?.images[activeImage]}
@@ -60,13 +60,14 @@ const ProductDetails = () => {
           </div>
 
           {/* Product Details */}
-          <div className="w-full sm:w-1/2 px-4 mt-6 md:mt-0">
+          <div className="w-full text-white bg-gray-500 sm:w-full px-1 mt-6 md:mt-0">
             <h2 className="sm:text-2xl text-base font-bold mb-4">{product?.title}</h2>
-            <p className="text-xl font-semibold text-gray-900 mr-4">
-              Product Price : <strong className="text-indigo-600">৳{product?.price}</strong>
+            <p className="sm:text-xl text-base font-semibold  mr-4">
+              Product Price : <strong className="text-indigo-500">৳{product?.price}</strong>
             </p>
             <TakeOrder />
-            <p className="text-gray-700 text-justify mb-6">{product?.description}</p>
+            <h1 className="text-center text-xl sm:text-2xl font-bold">Product Details</h1>
+            <p className="text-justify mb-6">{product?.description}</p>
             <div className="flex items-center mb-6">
             </div>
           </div>

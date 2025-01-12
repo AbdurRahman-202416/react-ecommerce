@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import apiRequest from "../Axios";
 import { notifyError, notifySuccess } from "./Toster";
 
@@ -21,16 +20,20 @@ const OrderForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setIsSubmitting(true);
+
+      if (!formData.product || !formData.size) {
+        notifyError("Please select a product and size.");
+        return;
+      }
+
       const response = await apiRequest.post("/categories", formData);
       console.log("Order response:", response.data);
-     notifySuccess("Order placed successfully!");
+      notifySuccess("Order placed successfully!");
 
-      // Reset the form
       setFormData({
         name: "",
         email: "",
@@ -49,10 +52,12 @@ const OrderForm = () => {
   };
 
   return (
-    <div className="container mx-auto p-1">
-      <h2 className="sm:text-3xl text-base font-bold text-center text-gray-800 mb-8">Place Your Order</h2>
+    <div className="container bg-white mx-auto py-2 ">
+      <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+        Place Your Order
+      </h2>
       <form
-        className="bg-white shadow-xl rounded-lg p-8 max-w-lg mx-auto space-y-6"
+        className=" rounded-sm p-2 w-full mx-auto grid grid-cols-2 sm:grid-cols-2 gap-2 sm:gap-6"
         onSubmit={handleSubmit}
       >
         {/* Name */}
@@ -67,7 +72,7 @@ const OrderForm = () => {
             value={formData.name}
             onChange={handleInputChange}
             required
-            className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2"
           />
         </div>
 
@@ -83,7 +88,7 @@ const OrderForm = () => {
             value={formData.email}
             onChange={handleInputChange}
             required
-            className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2"
           />
         </div>
 
@@ -99,12 +104,12 @@ const OrderForm = () => {
             value={formData.phone}
             onChange={handleInputChange}
             required
-            className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2"
           />
         </div>
 
         {/* Address */}
-        <div>
+        <div className="sm:col-span-2">
           <label htmlFor="address" className="block text-sm font-medium text-gray-700">
             Address
           </label>
@@ -114,10 +119,12 @@ const OrderForm = () => {
             value={formData.address}
             onChange={handleInputChange}
             required
-            className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2"
             rows="3"
           ></textarea>
         </div>
+
+    
 
         {/* Size */}
         <div>
@@ -130,10 +137,10 @@ const OrderForm = () => {
             value={formData.size}
             onChange={handleInputChange}
             required
-            className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2"
           >
             <option value="" disabled>
-              Choose Your size
+              Choose a size
             </option>
             <option value="XS">XS</option>
             <option value="S">S</option>
@@ -156,19 +163,21 @@ const OrderForm = () => {
             onChange={handleInputChange}
             min="1"
             required
-            className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2"
           />
         </div>
 
         {/* Submit Button */}
-        <button
-          type="submit"
-          className={`w-full bg-blue-600 text-white py-2 px-4 rounded-lg ${isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-700"
-            } transition duration-300`}
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? "Placing Order..." : "Submit Order"}
-        </button>
+        <div className="col-span-2 ">
+          <button
+            type="submit"
+            className={`w-full bg-blue-600 text-white py-3 px-4 rounded-lg ${isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-700"
+              } transition duration-300`}
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Placing Order..." : "Submit Order"}
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -2,10 +2,10 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-indigo-500 text-white py-8">
-      <div className="container mx-auto px-4 text-left space-y-6">
+    <footer className="bg-[#213555] text-white py-8 ">
+      <div className="container mx-auto px-6 text-left space-y-6">
         {/* Navigation Links */}
-        <nav className="space-y-2">
+        <section className="space-y-2">
           {[
             "About Us",
             "Our Store",
@@ -17,12 +17,12 @@ const Footer = () => {
           ].map((link, index) => (
             <p
               key={index}
-              className="text-sm sm:text-xl font-medium hover:underline cursor-pointer"
+              className="text-lg sm:text-2xl font-medium hover:underline cursor-pointer"
             >
               {link}
             </p>
           ))}
-        </nav>
+        </section>
 
         {/* Social Media Icons */}
         <div className="flex justify-center space-x-4">
@@ -32,7 +32,7 @@ const Footer = () => {
               href: "#",
               icon: (
                 <svg
-                  className="w-6 h-6"
+                  className="w-8 h-8"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -50,7 +50,7 @@ const Footer = () => {
               href: "#",
               icon: (
                 <svg
-                  className="w-6 h-6"
+                  className="w-8 h-8"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -71,7 +71,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright Section */}
-        <p className="text-sm text-center">© 2025, TWELVE CLOTHING LIMITED</p>
+        <p className="text-sm text-center">&copy; { new Date().getFullYear()}, FEARSTYLE CLOTHING LIMITED</p>
       </div>
     </footer>
   );

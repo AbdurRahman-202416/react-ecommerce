@@ -90,8 +90,6 @@ export const Home = () => {
       <section className="py-4">
         <Products />
       </section>
-
-
     </div>
   );
 };
