@@ -80,7 +80,7 @@ export const Home = () => {
       {/* Promotional Banner */}
       <section className="w-full px-1 mb-2">
         <img
-          className="w-full h-[80px] sm:h-[160px] object-cover rounded-sm "
+          className="w-full h-[100px] sm:h-[160px] object-cover rounded-sm "
           src={banner}
           alt="Promotional Banner"
         />
