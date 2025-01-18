@@ -53,7 +53,9 @@ const Products = () => {
                     <h2 className="mb-2 text-[13] sm:text-[16px] font-medium dark:text-white text-warp text-gray-900">
                       {product.title}
                     </h2>
-
+                    <p className=" text-[12px]  sm:text-[15px]  font-semibold text-gray-500">
+                        Avalable Size : S,M,L,XL,XXL. {product.size}
+                      </p>
                     <div className="flex items-center">
                       <p className="mr-2 text-lg font-semibold text-gray-900 dark:text-white">
                         <strong>৳</strong>{product.price}
