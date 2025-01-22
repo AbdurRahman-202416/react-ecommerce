@@ -63,7 +63,7 @@ const ProductDetails = () => {
           <div className="w-full text-white bg-gray-500 sm:w-full px-1 mt-6 md:mt-0">
             <h2 className="sm:text-2xl text-base font-bold mb-4">{product?.title}</h2>
             <p className="sm:text-xl text-base font-semibold  mr-4">
-              Product Price : <strong className="text-indigo-500">৳{product?.price}</strong>
+              Product Price : <strong className="text-green-500">৳{product?.price}</strong>
             </p>
             <TakeOrder />
             <h1 className="text-center text-xl sm:text-2xl font-bold">Product Details</h1>
