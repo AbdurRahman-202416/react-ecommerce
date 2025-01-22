@@ -37,7 +37,7 @@ const Products = () => {
       const data = response.data;
       if (data) {
         window.scrollTo({
-          top: 0,
+          top: 10,
           behavior: 'smooth',
         });
       }

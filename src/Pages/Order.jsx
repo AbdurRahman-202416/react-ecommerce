@@ -50,8 +50,8 @@ const ProductDetails = () => {
                     alt="Thumbnail"
                     onClick={() => setActiveImage(index)}
                     className={`w-16 h-16 mx-2 border rounded-lg object-cover cursor-pointer ${activeImage === index
-                        ? "border-blue-500"
-                        : "border-gray-300"
+                      ? "border-blue-500"
+                      : "border-gray-300"
                       }`}
                   />
                 ))}

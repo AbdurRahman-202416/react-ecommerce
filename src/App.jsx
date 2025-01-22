@@ -43,10 +43,6 @@ function App() {
   apiRequest.interceptors.response.use(
     (res) => {
       setLoader(false);
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
       return res;
     },
     (error) => {

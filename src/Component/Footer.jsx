@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#213555] text-white py-8 ">
-      <section className="mx-[10%] mb-2 sm:py-8">
+    <footer className="bg-[#213555] text-white py-4 ">
+      <section className="mx-[10%] border-b-2 border-white py-2 mb-2 sm:py-8">
         <div className="container mx-auto">
 
           <div className="text-center py-1 sm:py-8 ">
@@ -63,7 +64,7 @@ const Footer = () => {
       </section>
 
 
-      <div className="container mx-auto px-6 text-left space-y-6">
+      <div className="container mx-auto  px-6 text-left space-y-6">
         {/* Navigation Links */}
         <section className="space-y-2">
           {[
@@ -77,7 +78,7 @@ const Footer = () => {
           ].map((link, index) => (
             <p
               key={index}
-              className="text-lg sm:text-2xl font-medium hover:underline cursor-pointer"
+              className="text-sm sm:text-2xl font-medium hover:underline cursor-pointer"
             >
               {link}
             </p>
@@ -89,7 +90,7 @@ const Footer = () => {
           {[
             {
               label: "Facebook",
-              href: "#",
+              href: "https://www.facebook.com/profile.php?id=61556698305870",
               icon: (
                 <svg
                   className="w-8 h-8"
@@ -107,7 +108,7 @@ const Footer = () => {
             },
             {
               label: "Instagram",
-              href: "#",
+              href: "https://www.facebook.com/profile.php?id=61556698305870",
               icon: (
                 <svg
                   className="w-8 h-8"
@@ -124,9 +125,9 @@ const Footer = () => {
               ),
             },
           ].map((social, index) => (
-            <a key={index} href={social.href} className="hover:text-gray-100 justify-center">
+            <Link key={index} to={social.href} className="hover:text-gray-100 justify-center">
               {social.icon}
-            </a>
+            </Link>
           ))}
         </div>
 
