@@ -35,12 +35,7 @@ const Products = () => {
     try {
       const response = await apiRequest.get('/categories');
       const data = response.data;
-      if (data) {
-        window.scrollTo({
-          top: 10,
-          behavior: 'smooth',
-        });
-      }
+     
 
       // Find and set the current category based on the id parameter
       const category = data.find(cat => cat.id === Number(id));
