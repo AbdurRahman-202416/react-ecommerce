@@ -10,12 +10,7 @@ const Products = () => {
     try {
       const response = await apiRequest.get("/products");
       const data = response.data;
-      if(data){
-        window.scrollTo({
-          top: 2,
-          behavior: 'smooth',
-        });
-      }
+     
       console.log(data);
       setProduct(data);
     } catch (error) {
