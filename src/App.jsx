@@ -8,7 +8,9 @@ import Order from './Pages/Order';
 import Navbar from './Component/Navbar';
 import Footer from './Component/Footer';
 import Contact from './Pages/Contact';
+import Cart from './Pages/Cart';
 import apiRequest from './Axios';
+import { Toaster } from 'react-hot-toast';
 
 // Layout component that includes Navbar, Footer, and Loader
 const Layout = ({ loader }) => {
@@ -28,6 +30,7 @@ const Layout = ({ loader }) => {
         <Outlet />
       </main>
       <Footer />
+      <Toaster position="top-center" />
     </div>
   );
 };
@@ -60,6 +63,7 @@ function App() {
           <Route path="/categories/:id" element={<Categories />} />
           <Route path="/order/:id" element={<Order />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<Nofound />} />
         </Route>
       </Routes>
